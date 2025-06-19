@@ -131,8 +131,7 @@ async def handle_request(bot, message):
             await bot.copy_message(
                 chat_id=message.chat.id,
                 from_chat_id=channel,
-                message_id=file['msg_id'],
-                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
+                message_id=file['msg_id']
             )
         except Exception:
             await message.reply("Failed to send video.")
@@ -167,8 +166,7 @@ async def handle_request(bot, message):
             await bot.copy_message(
                 chat_id=message.chat.id,
                 from_chat_id=channel,
-                message_id=file['msg_id'],
-                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
+                message_id=file['msg_id']
             )
         except Exception:
             await message.reply("Failed to send video.")
