@@ -1,15 +1,14 @@
 LOG_TEXT = """<b>#NewUser\n\nID - <code>{}</code>\n\nNᴀᴍᴇ - {}</b>"""
 
-ABOUT_TXT = """<b>╭────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
-├⍟ ᴍʏ ɴᴀᴍᴇ : 𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦
-├⍟ Dᴇᴠᴇʟᴏᴘᴇʀ : @Developer_DM_Bot
-├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
-├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
-├⍟ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
-├⍟ ꜱᴛᴀᴛᴜꜱ : ᴠ0.102 [ ꜱᴛᴀʙʟᴇ ]
-|
-├⍟ <a href='https://t.me/Developer_DM_Bot'>Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Aꜱᴋ Mᴇ ✓</a>
-╰───────────────⍟</b>"""
+ABOUT_TXT = """<b>⍟────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
+‣ ᴍʏ ɴᴀᴍᴇ : [𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦](https://t.me/AdultColonyXBot)
+‣ Dᴇᴠᴇʟᴏᴘᴇʀ : @Developer_DM_Bot
+‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
+‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
+‣ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
+‣ ꜱᴛᴀᴛᴜꜱ : v0.2 [ ꜱᴛᴀʙʟᴇ ]
+
+ <a href='https://t.me/Developer_DM_Bot'>Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Aꜱᴋ Mᴇ ✓</a></b>"""
 
 VERIFICATION_TEXT = """<b><i>👋 ʜᴇʏ {},
 
@@ -26,12 +25,13 @@ VERIFIED_LOG_TEXT = """ᴜꜱᴇʀ ᴠᴇʀɪꜰɪᴇᴅ ꜱᴜᴄᴄᴇꜱꜱ�
 SUBS_TXT = """𝖯𝗎𝗋𝖼𝗁𝖺𝗌𝖾 𝖮𝗎𝗋 𝖲𝗎𝖻𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇 𝖳𝗈 𝖡𝗈𝗈𝗌𝗍 𝖸𝗈𝗎 𝖣𝖺𝗂𝗅𝗒 𝖫𝗂𝗆𝗂𝗍𝗌.
 
 <blockquote>𝖥𝗋𝖾𝖾 𝖴𝗌𝖾𝗋 𝖡𝖾𝗇𝖾𝖿𝗂𝗍𝗌</blockquote>
-» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 5 𝖥𝗂𝗅𝖾𝗌 𝖣𝖺𝗂𝗅𝗒
-» 𝖬𝖺𝗑𝗂𝗆𝗎𝗆 𝖵𝗂𝖽𝖾𝗈 𝖫𝖾𝗇𝗀𝗍𝗁 5 𝖬𝗂𝗇𝗎𝗍𝖾𝗌 
+» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 10 𝖣𝖾𝗌𝗂 𝖵𝗂𝖽𝖾𝗈 𝖥𝗂𝗅𝖾𝗌 
+» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 03 𝖵𝗂𝖽𝖾𝗌𝗂 𝖵𝗂𝖽𝖾𝗈 𝖥𝗂𝗅𝖾𝗌 
 » 𝖭𝗈 𝖯𝗋𝖾𝗆𝗂𝗎𝗆 𝖢𝗈𝗇𝗍𝖾𝗇𝗍
 
 <blockquote>𝖯𝗋𝖾𝗆𝗂𝗎𝗆 𝖴𝗌𝖾𝗋 𝖡𝖾𝗇𝖾𝖿𝗂𝗍𝗌</blockquote>
-» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 40 𝖥𝗂𝗅𝖾𝗌 𝖣𝖺𝗂𝗅𝗒 
+» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 40 𝖣𝖾𝗌𝗂 𝖵𝗂𝖽𝖾𝗈 𝖥𝗂𝗅𝖾𝗌 
+» 𝖦𝖾𝗍 𝖣𝖺𝗂𝗅𝗒 15 𝖵𝗂𝖽𝖾𝗌𝗂 𝖵𝗂𝖽𝖾𝗈 𝖥𝗂𝗅𝖾𝗌 
 » 𝖬𝖺𝗑𝗂𝗆𝗎𝗆 𝖵𝗂𝖽𝖾𝗈 𝖫𝖾𝗇𝗀𝗍𝗁 𝖴𝗇𝗅𝗂𝗆𝗂𝗍𝖾𝖽
 » 𝖯𝗋𝖾𝗆𝗂𝗎𝗆 𝖢𝗈𝗇𝗍𝖾𝗇𝗍    
   
