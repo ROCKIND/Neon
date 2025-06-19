@@ -134,9 +134,11 @@ async def handle_request(bot, message):
                 message_id=file['msg_id'],
                 caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
             )
-        except Exception:
-            await message.reply("Failed to send video.")
-
+        except Exception as e:
+            print(f"❌ Error sending file: {e}")
+            await db.delete_file(file['msg_id'])  # ← Use the function here
+            await message.reply("⚠️ Failed to send video. It may have been deleted.")
+    
     elif "desi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
@@ -172,8 +174,10 @@ async def handle_request(bot, message):
                 message_id=file['msg_id'],
                 caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
             )
-        except Exception:
-            await message.reply("Failed to send video.")
+        except Exception as e:
+            print(f"❌ Error sending file: {e}")
+            await db.delete_file(file['msg_id'])  # ← Use the function here
+            await message.reply("⚠️ Failed to send video. It may have been deleted.")
     
     elif "my plan" in text:
         user = await db.get_user(user_id)
