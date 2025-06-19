@@ -21,8 +21,13 @@ PREMIUM_LIMIT_DESI = 40
 PREMIUM_LIMIT_VIDESI = 15
 
 # Bot Admins
-DS_ADMINS = int(environ.get("DS_ADMINS", "1562935405"))
-
+try:
+    DS_ADMINS=[]
+    for x in (environ.get("DS_ADMINS", "1562935405").split()):
+        DS_ADMINS.append(int(x))
+except ValueError:
+      raise Exception("Your Admins list does not contain valid integers.")
+    
 # Mongodb Database 
 DS_DB_URI = environ.get("DS_DB_URI", "mongodb+srv://Botmaster:Botmaster@cluster08283746473883.mfjsvds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster08283746473883")
 DS_DB_NAME = environ.get("DS_DB_NAME", "achatvjbot")
@@ -34,7 +39,7 @@ DS_FORWARD = bool(environ.get("DS_FORWARD", False))
 DS_AUTH_CHANNEL = int(environ.get('DS_AUTH_CHANNEL', '-1002609521633')) # give your force subscribe channel id here else leave it blank
 
 # Verification Variables
-DS_API = environ.get("DS_API", "f12bdd3c5c118fdc7ab6dd26bbf360968923f379") # shortlink api
-DS_URL = environ.get("DS_URL", "tnshort.net") # shortlink domain without https://
+DS_API = environ.get("DS_API", "a5515d390b300450bc0f19bd205f552be8082b40") # shortlink api
+DS_URL = environ.get("DS_URL", "linkcents.com") # shortlink domain without https://
 DS_VERIFY_TUTORIAL = environ.get("DS_VERIFY_TUTORIAL", "https://t.me/Robo_5_0/44") # how to open link 
 DS_VERIFICATION = bool(environ.get("DS_VERIFICATION", True)) # set True Or False and make sure spelling is correct and first letter capital.
