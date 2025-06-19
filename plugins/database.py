@@ -72,7 +72,10 @@ class Database:
             {"$match": {"tag": tag}},
             {"$sample": {"size": 1}}
         ])
-        return await cursor.next()
+        try:
+            return await cursor.next()
+        except StopAsyncIteration:
+            return None
     
     async def set_plan(self, id, plan):
         await self.users.update_one({'id': int(id)}, {'$set': {'plan': plan}})
