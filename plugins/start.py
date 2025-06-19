@@ -31,6 +31,14 @@ keyboard = ReplyKeyboardMarkup(
     one_time_keyboard=False  # Set to True if you want the keyboard to disappear after a button press
 )
 
+@Client.on_message(filters.private & filters.command("status") & filters.user(DS_ADMINS))
+async def sts(_, m: Message):
+    total_users = await db.total_users_count()
+    await m.reply_text(
+        text=f"**Total Users in DB:** `{total_users}`",
+        quote=True
+    )
+    
 @Client.on_message(filters.command("start") & filters.private & filters.incoming)
 async def start(client, message):
     if message.chat.type == enums.ChatType.PRIVATE:
