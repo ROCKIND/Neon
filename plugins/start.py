@@ -76,7 +76,7 @@ async def start(client, message):
                         f"<b>✅ Hey {message.from_user.mention}, you are successfully verified! \nYou now have access until midnight today.</b>",
                         protect_content=True
                     )
-                await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id)
+                await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id))
                 await verify_user(client, userid, token) 
                 await asyncio.sleep(70)
                 await t.delete()
