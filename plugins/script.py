@@ -1,12 +1,12 @@
 LOG_TEXT = """<b>#NewUser\n\nID - <code>{}</code>\n\nNᴀᴍᴇ - {}</b>"""
 
-ABOUT_TXT = """<b><blockquote>
+ABOUT_TXT = """<b>
 ‣ ᴍʏ ɴᴀᴍᴇ : <a href='https://t.me/AdultColonyXBot'>𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦</a>
 ‣ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/Developer_DM_Bot'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
 ‣ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ‣ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
 ‣ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
-‣ ꜱᴛᴀᴛᴜꜱ : v0.2 [ ꜱᴛᴀʙʟᴇ ]</blockquote>
+‣ ꜱᴛᴀᴛᴜꜱ : v0.2 [ ꜱᴛᴀʙʟᴇ ]
 
 Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Cᴏɴᴛᴀᴄᴛ Wɪᴛʜ Dᴇᴠᴇʟᴘᴇʀ ✓</b>"""
 
