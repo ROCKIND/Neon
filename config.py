@@ -36,7 +36,7 @@ DS_DB_NAME = environ.get("DS_DB_NAME", "silentghost")
 DS_FORWARD = bool(environ.get("DS_FORWARD", False))
 
 # Force subscribe channel 
-DS_AUTH_CHANNEL = int(environ.get('DS_AUTH_CHANNEL', '-1002224312828')) # give your force subscribe channel id here else leave it blank
+DS_AUTH_CHANNEL = int(environ.get('DS_AUTH_CHANNEL', '-1002609521633')) # give your force subscribe channel id here else leave it blank
 
 # Verification Variables
 DS_API = environ.get("DS_API", "a5515d390b300450bc0f19bd205f552be8082b40") # shortlink api
