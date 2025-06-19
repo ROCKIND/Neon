@@ -24,7 +24,7 @@ keyboard = ReplyKeyboardMarkup(
             KeyboardButton("Subscription")
         ],
         [
-            KeyboardButton("About")
+            KeyboardButton("Bot Repo Details")
         ]
     ],
     resize_keyboard=True,
@@ -93,7 +93,7 @@ async def start(client, message):
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.HTML
         )
-        await asyncio.sleep(60)
+        await asyncio.sleep(10)
         await s.delete()
 
 @Client.on_message(filters.private & filters.text & ~filters.command("start"))
@@ -110,7 +110,7 @@ async def handle_request(bot, message):
                 btn = [[
                     InlineKeyboardButton("Verify ✓", url=await get_token(bot, user_id, f"https://telegram.me/{DS_BOT_USERNAME}?start="))
                 ],[
-                    InlineKeyboardButton("How To Open Link & Verify", url=DS_VERIFY_TUTORIAL)
+                    InlineKeyboardButton("How To Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
                 await message.reply_text(
                     text=VERIFICATION_TEXT.format(message.from_user.mention),
@@ -180,7 +180,6 @@ async def handle_request(bot, message):
 
         name = message.from_user.mention
         plan = "Premium" if await db.has_premium_access(user_id) else "Free"
-        # used = user.get("free_used", {"desi": 0, "videsi": 0})
 
         if plan == "Premium":
             desi_limit = PREMIUM_LIMIT_DESI
@@ -213,16 +212,16 @@ async def handle_request(bot, message):
     
     elif "subscription" in text: 
         buttons = [[
-            InlineKeyboardButton('Buy ✓', url='https://t.me/DarkyZone')
+            InlineKeyboardButton('Buy ✓', url='https://t.me/Developer_DM_Bot')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(text=SUBS_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML)
 
-    elif "about" in text:
+    elif "bot repo details" in text:
         buttons = [[
-            InlineKeyboardButton('Buy Repo ✓', url='http://t.me/THE_DS_OFFICIAL')
+            InlineKeyboardButton('Buy Repo ✓', url='http://t.me/Developer_DM_Bot')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         c = await message.reply_text(text=ABOUT_TXT,
