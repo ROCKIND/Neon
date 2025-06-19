@@ -97,10 +97,10 @@ async def start(client, message):
 @Client.on_message(filters.private & filters.text & ~filters.command("start"))
 async def handle_request(bot, message):
     user_id = message.from_user.id
-    text = message.text.lower()
+    text = message.text.lower().strip()
     me = await bot.get_me()
     
-    if "desi video" in text:
+    if "videsi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
         if not await db.has_premium_access(user_id):
@@ -118,7 +118,7 @@ async def handle_request(bot, message):
                 await asyncio.sleep(300)
                 await k.delete()
                 return
-        tag, channel = "desi", DS_DESI_FILE_CHANNEL
+        tag, channel = "videsi", DS_VIDESI_FILE_CHANNEL
         allowed = await check_and_increment(user_id, tag)
         if not allowed:
             return await message.reply("Daily limit reached. Upgrade to premium.")
@@ -137,7 +137,7 @@ async def handle_request(bot, message):
         except Exception:
             await message.reply("Failed to send video.")
 
-    elif "videsi video" in text:
+    elif "desi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
         if not await db.has_premium_access(user_id):
@@ -156,7 +156,7 @@ async def handle_request(bot, message):
                 await i.delete()
                 return
             
-        tag, channel = "videsi", DS_VIDESI_FILE_CHANNEL
+        tag, channel = "desi", DS_DESI_FILE_CHANNEL
         allowed = await check_and_increment(user_id, tag)
         if not allowed:
             return await message.reply("Daily limit reached. Upgrade to premium.")
