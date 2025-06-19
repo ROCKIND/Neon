@@ -165,7 +165,7 @@ async def handle_request(bot, message):
 
         name = message.from_user.mention
         plan = "Premium" if await db.has_premium_access(user_id) else "Free"
-        used = user.get("free_used", {"desi": 0, "videsi": 0})
+        # used = user.get("free_used", {"desi": 0, "videsi": 0})
 
         if plan == "Premium":
             desi_limit = PREMIUM_LIMIT_DESI
@@ -173,6 +173,10 @@ async def handle_request(bot, message):
         else:
             desi_limit = FREE_LIMIT_DESI
             videsi_limit = FREE_LIMIT_VIDESI
+
+        used = await db.get_free_used(user_id)
+        if not isinstance(used, dict):
+            used = {"desi": 0, "videsi": 0}
 
         desi_used = used.get("desi", 0)
         videsi_used = used.get("videsi", 0)
@@ -200,8 +204,3 @@ async def handle_request(bot, message):
         await message.reply_text(text=SUBS_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML)
-   
-    else:
-        return await message.reply("Invalid option.")
-
-    
