@@ -2,7 +2,7 @@ import asyncio
 from config import *
 from .database import db
 from .fsub import checkSub
-from .script import DS_TEXT, DST_TEXT, LOG_TEXT, SUBS_TXT
+from .script import DS_TEXT, DST_TEXT, LOG_TEXT, SUBS_TXT, VERIFIED_LOG_TEXT, VERIFICATION_TEXT, ABOUT_TXT
 from utils import verify_user, check_token, check_verification, get_token, check_and_increment
 from pyrogram.errors import *
 from pyrogram import Client, filters, enums
@@ -24,7 +24,7 @@ keyboard = ReplyKeyboardMarkup(
             KeyboardButton("Subscription")
         ],
         [
-            KeyboardButton("Developer")
+            KeyboardButton("About")
         ]
     ],
     resize_keyboard=True,
@@ -73,9 +73,10 @@ async def start(client, message):
             is_valid = await check_token(client, userid, token)
             if is_valid:
                 t = await message.reply_text(
-                        f"<b>✅ Hey {message.from_user.mention}, you are successfully verified!\nYou now have access until midnight today.</b>",
+                        f"<b>✅ Hey {message.from_user.mention}, you are successfully verified! \nYou now have access until midnight today.</b>",
                         protect_content=True
                     )
+                await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id)
                 await verify_user(client, userid, token) 
                 await asyncio.sleep(70)
                 await t.delete()
@@ -106,12 +107,12 @@ async def handle_request(bot, message):
         if not await db.has_premium_access(user_id):
             if not await check_verification(bot, user_id) and DS_VERIFICATION == True:
                 btn = [[
-                    InlineKeyboardButton("Verify", url=await get_token(bot, user_id, f"https://telegram.me/{DS_BOT_USERNAME}?start="))
+                    InlineKeyboardButton("Verify ✓", url=await get_token(bot, user_id, f"https://telegram.me/{DS_BOT_USERNAME}?start="))
                 ],[
                     InlineKeyboardButton("How To Open Link & Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
                 await message.reply_text(
-                    text="<b>You are not verified !\nKindly verify to continue !</b>",
+                    text=VERIFICATION_TEXT.format(message.from_user.mention),
                     protect_content=True,
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
@@ -145,7 +146,7 @@ async def handle_request(bot, message):
                     InlineKeyboardButton("How To Open Link & Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
                 await message.reply_text(
-                    text="<b>You are not verified !\nKindly verify to continue !</b>",
+                    text=VERIFICATION_TEXT.format(message.from_user.mention),
                     protect_content=True,
                     reply_markup=InlineKeyboardMarkup(btn)
                 )
@@ -216,12 +217,13 @@ async def handle_request(bot, message):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML)
 
-    elif "developer" in text:
+    elif "about" in text:
         buttons = [[
             InlineKeyboardButton('Buy Repo ✓', url='http://t.me/THE_DS_OFFICIAL')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await message.reply_text(text=DEV_TXT,
-            reply_markup=reply_markup,
-            parse_mode=enums.ParseMode.HTML)
-        
+        c = await message.reply_text(text=ABOUT_TXT,
+                reply_markup=reply_markup,
+                parse_mode=enums.ParseMode.HTML)
+        await asyncio.sleep(300)
+        await c.delete()
