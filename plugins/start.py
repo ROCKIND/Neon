@@ -16,12 +16,15 @@ from pyrogram.types import (
 keyboard = ReplyKeyboardMarkup(
     [
         [
-            KeyboardButton("Get Video"),
-            KeyboardButton("Videsi HD")
+            KeyboardButton("Desi Video"),
+            KeyboardButton("Videsi Video")
         ],
         [
             KeyboardButton("My Plan"),
             KeyboardButton("Subscription")
+        ],
+        [
+            KeyboardButton("Developer")
         ]
     ],
     resize_keyboard=True,
@@ -89,7 +92,7 @@ async def handle_request(bot, message):
     user_id = message.from_user.id
     text = message.text.lower()
 
-    if "get video" in text:
+    if "desi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
         if not await db.has_premium_access(user_id):
@@ -123,7 +126,7 @@ async def handle_request(bot, message):
         except Exception:
             await message.reply("Failed to send video.")
 
-    elif "videsi hd" in text:
+    elif "videsi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
         if not await db.has_premium_access(user_id):
@@ -198,9 +201,19 @@ async def handle_request(bot, message):
     
     elif "subscription" in text: 
         buttons = [[
-            InlineKeyboardButton('Buy ✓', url='http://t.me/THE_DS_OFFICIAL')
+            InlineKeyboardButton('Buy ✓', url='https://t.me/DarkyZone')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_text(text=SUBS_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML)
+
+    elif "developer" in text:
+        buttons = [[
+            InlineKeyboardButton('Buy Repo ✓', url='http://t.me/THE_DS_OFFICIAL')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await message.reply_text(text=DEV_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML)
+        
