@@ -21,10 +21,10 @@ keyboard = ReplyKeyboardMarkup(
         ],
         [
             KeyboardButton("My Plan"),
-            KeyboardButton("Subscription")
+            KeyboardButton("Get Premium")
         ],
         [
-            KeyboardButton("Bot Repo Details")
+            KeyboardButton("Bot & Repo Details")
         ]
     ],
     resize_keyboard=True,
@@ -53,12 +53,12 @@ async def start(client, message):
         payload = message.command[1] if len(message.command) > 1 else None
         if payload == "disclaimer":
             a = await message.reply_text(DS_TEXT, parse_mode=enums.ParseMode.HTML)
-            await asyncio.sleep(300)
+            await asyncio.sleep(180)
             await a.delete()
 
         if payload == "terms":
             b = await message.reply_text(DST_TEXT, parse_mode=enums.ParseMode.HTML)
-            await asyncio.sleep(300)
+            await asyncio.sleep(180)
             await b.delete()
 
         if payload and payload.startswith("verify-"):
@@ -73,7 +73,7 @@ async def start(client, message):
             is_valid = await check_token(client, userid, token)
             if is_valid:
                 t = await message.reply_text(
-                        f"<b>✅ Hey {message.from_user.mention}, you are successfully verified! \nYou now have access until midnight today.</b>",
+                        f"<b>✅ Hey {message.from_user.mention}, you are successfully verified! \n\nYou now have access until midnight today ✓</b>",
                         protect_content=True
                     )
                 await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id))
@@ -112,11 +112,13 @@ async def handle_request(bot, message):
                 ],[
                     InlineKeyboardButton("How To Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
-                await message.reply_text(
-                    text=VERIFICATION_TEXT.format(message.from_user.mention),
-                    protect_content=True,
-                    reply_markup=InlineKeyboardMarkup(btn)
-                )
+                k = await message.reply_text(
+                        text=VERIFICATION_TEXT.format(message.from_user.mention),
+                        protect_content=True,
+                        reply_markup=InlineKeyboardMarkup(btn)
+                    )
+                await asyncio.sleep(300)
+                await k.delete()
                 return
         tag, channel = "desi", DS_DESI_FILE_CHANNEL
         allowed = await check_and_increment(user_id, tag)
@@ -210,7 +212,7 @@ async def handle_request(bot, message):
 
         await message.reply(text, parse_mode=enums.ParseMode.HTML)
     
-    elif "subscription" in text: 
+    elif "get premium" in text: 
         buttons = [[
             InlineKeyboardButton('Buy ✓', url='https://t.me/Developer_DM_Bot')
         ]]
@@ -219,13 +221,14 @@ async def handle_request(bot, message):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML)
 
-    elif "bot repo details" in text:
+    elif "bot & repo details" in text:
         buttons = [[
             InlineKeyboardButton('Buy Repo ✓', url='http://t.me/Developer_DM_Bot')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         c = await message.reply_text(text=ABOUT_TXT,
                 reply_markup=reply_markup,
+                disable_web_page_preview=True,
                 parse_mode=enums.ParseMode.HTML)
         await asyncio.sleep(300)
         await c.delete()
