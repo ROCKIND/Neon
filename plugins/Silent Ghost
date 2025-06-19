@@ -1,0 +1,27 @@
+# utils/limits.py
+import datetime
+from config import FREE_DAILY_LIMIT
+from .database import db
+
+async def check_and_increment(user_id):
+    user = await db.get_user(user_id)
+    if not user:
+        await db.add_user(user_id, f"User{user_id}")
+        return True
+
+    today = datetime.datetime.utcnow().date()
+    last_used = user.get("date")
+    used = user.get("free_used", 0)
+
+    if await db.has_premium_access(user_id):
+        return True
+
+    if last_used == str(today):
+        if used >= FREE_DAILY_LIMIT:
+            return False
+        await db.set_free_used(user_id, used + 1)
+    else:
+        await db.set_free_used(user_id, 1)
+        await db.set_date(user_id, str(today))
+
+    return True
