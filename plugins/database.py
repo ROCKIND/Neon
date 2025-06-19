@@ -54,6 +54,9 @@ class Database:
     async def delete_user(self, user_id):
         await self.users.delete_many({'id': int(user_id)})
 
+    async def delete_file(self, file_id):
+        await self.files.delete_one({'_id': file_id})
+    
     async def total_users_count(self):
         count = await self.users.count_documents({})
         return count
