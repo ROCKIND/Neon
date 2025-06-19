@@ -100,7 +100,7 @@ async def start(client, message):
 async def handle_request(bot, message):
     user_id = message.from_user.id
     text = message.text.lower()
-    me = await client.get_me()
+    me = await bot.get_me()
     
     if "desi video" in text:
         is_joined = await checkSub(bot, message)
