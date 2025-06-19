@@ -30,7 +30,7 @@ except ValueError:
     
 # Mongodb Database 
 DS_DB_URI = environ.get("DS_DB_URI", "mongodb+srv://Botmaster:Botmaster@cluster08283746473883.mfjsvds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster08283746473883")
-DS_DB_NAME = environ.get("DS_DB_NAME", "silentghostpvt")
+DS_DB_NAME = environ.get("DS_DB_NAME", "silentghostnew")
 
 # True Or False
 DS_FORWARD = bool(environ.get("DS_FORWARD", False))
