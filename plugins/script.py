@@ -1,14 +1,14 @@
 LOG_TEXT = """<b>#NewUser\n\nID - <code>{}</code>\n\nNᴀᴍᴇ - {}</b>"""
 
 ABOUT_TXT = """<b>╭────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
-├⍟ ᴍʏ ɴᴀᴍᴇ : Silent Adult Bot 🔞 
-├⍟ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a> 
+├⍟ ᴍʏ ɴᴀᴍᴇ : 𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦
+├⍟ Dᴇᴠᴇʟᴏᴘᴇʀ : @Developer_DM_Bot
 ├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
 ├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
 ├⍟ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
-├⍟ ꜱᴛᴀᴛᴜꜱ : ᴠ0.8 [ ꜱᴛᴀʙʟᴇ ]
+├⍟ ꜱᴛᴀᴛᴜꜱ : ᴠ0.102 [ ꜱᴛᴀʙʟᴇ ]
 |
-├⍟ <a href='https://t.me/THE_DS_OFFICIAL'>Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Aꜱᴋ Mᴇ ✓</a>
+├⍟ <a href='https://t.me/Developer_DM_Bot'>Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Aꜱᴋ Mᴇ ✓</a>
 ╰───────────────⍟</b>"""
 
 VERIFICATION_TEXT = """<b><i>👋 ʜᴇʏ {},
@@ -36,11 +36,11 @@ SUBS_TXT = """𝖯𝗎𝗋𝖼𝗁𝖺𝗌𝖾 𝖮𝗎𝗋 𝖲𝗎𝖻𝗌𝖼
 » 𝖯𝗋𝖾𝗆𝗂𝗎𝗆 𝖢𝗈𝗇𝗍𝖾𝗇𝗍    
   
 <blockquote>𝖲𝗎𝖻𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇 𝖯𝗋𝗂𝖼𝖾</blockquote> 
-7 Day   - 30Rs
-1 𝖬𝗈𝗇𝗍𝗁 - 50𝖱𝗌 
-2 𝖬𝗈𝗇𝗍𝗁 - 90𝖱𝗌  
-3 𝖬𝗈𝗇𝗍𝗁 - 130𝖱𝗌 
-4 𝖬𝗈𝗇𝗍𝗁 - 150𝖱𝗌 
+7 Day   - 50Rs
+1 𝖬𝗈𝗇𝗍𝗁 - 100𝖱𝗌 
+2 𝖬𝗈𝗇𝗍𝗁 - 180𝖱𝗌  
+3 𝖬𝗈𝗇𝗍𝗁 - 250𝖱𝗌 
+4 𝖬𝗈𝗇𝗍𝗁 - 320𝖱𝗌 
 
 𝖢𝗈𝗇𝗍𝖺𝖼𝗍 𝖮𝗐𝗇𝖾𝗋 𝖥𝗈𝗋 𝖬𝗈𝗋𝖾 𝖨𝗇𝖿𝗈𝗋𝗆𝖺𝗍𝗂𝗈𝗇 𝖠𝖻𝗈𝗎𝗍 𝖯𝖺𝗒𝗆𝖾𝗇𝗍."""
 
