@@ -100,7 +100,8 @@ async def start(client, message):
 async def handle_request(bot, message):
     user_id = message.from_user.id
     text = message.text.lower()
-
+    me = await client.get_me()
+    
     if "desi video" in text:
         is_joined = await checkSub(bot, message)
         if not is_joined: return
@@ -130,7 +131,8 @@ async def handle_request(bot, message):
             await bot.copy_message(
                 chat_id=message.chat.id,
                 from_chat_id=channel,
-                message_id=file['msg_id']
+                message_id=file['msg_id'],
+                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
             )
         except Exception:
             await message.reply("Failed to send video.")
@@ -165,7 +167,8 @@ async def handle_request(bot, message):
             await bot.copy_message(
                 chat_id=message.chat.id,
                 from_chat_id=channel,
-                message_id=file['msg_id']
+                message_id=file['msg_id'],
+                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
             )
         except Exception:
             await message.reply("Failed to send video.")
