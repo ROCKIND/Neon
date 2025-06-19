@@ -32,9 +32,9 @@ keyboard = ReplyKeyboardMarkup(
 )
 
 @Client.on_message(filters.private & filters.command("users") & filters.user(DS_ADMINS))
-async def sts(_, m: Message):
+async def sts(client, message):
     total_users = await db.total_users_count()
-    await m.reply_text(
+    await message.reply_text(
         text=f"**Total Users in DB:** `{total_users}`",
         quote=True
     )
