@@ -86,15 +86,13 @@ async def start(client, message):
                     protect_content=True
                 )
 
-        #s = await message.reply_sticker(sticker=DS_STICKER)
+    
         await message.reply_photo(
             photo=DS_PIC,
             caption=f"""<b><blockquote>𝖳𝗁𝗂𝗌 𝖡𝗈𝗍 𝖢𝗈𝗇𝗍𝖺𝗂𝗇𝗌 18+ 𝖢𝗈𝗇𝗍𝖾𝗇𝗍 𝖲𝗈 𝖪𝗂𝗇𝖽𝗅𝗒 𝖠𝖼𝖼𝖾𝗌𝗌 𝖨𝗍 𝖶𝗂𝗍𝗁 𝖸𝗈𝗎𝗋 𝖮𝗐𝗇 𝖱𝗂𝗌𝗄. 𝖳𝗁𝖾 𝖬𝖺𝗍𝖾𝗋𝗂𝖺𝗅 𝖬𝖺𝗒 𝖨𝗇𝖼𝗅𝗎𝖽𝖾 𝖤𝗑𝗉𝗅𝗂𝖼𝗂𝗍 𝖮𝗋 𝖦𝗋𝖺𝗉𝗁𝗂𝖼 𝖢𝗈𝗇𝗍𝖺𝖼𝗍 𝖳𝗁𝖺𝗍 𝖨𝗌 𝖴𝗇𝗌𝗎𝗂𝗍𝖺𝖻𝗅𝖾 𝖥𝗈𝗋 𝖬𝗂𝗇𝗈𝗋𝗌. 𝖲𝗈 𝖢𝗁𝗂𝗅𝖽𝗋𝖾𝗇𝗌 𝖯𝗅𝖾𝖺𝗌𝖾 𝖲𝗍𝖺𝗒 𝖠𝗐𝖺𝗒.</blockquote>\n\n𝖯𝗅𝖾𝖺𝗌𝖾 𝖢𝗁𝖾𝖼𝗄 𝖮𝗎𝗋 <a href="https://t.me/{DS_BOT_USERNAME}?start=disclaimer">𝖣𝗂𝗌𝖼𝗅𝖺𝗂𝗆𝖾𝗋</a> 𝖠𝗇𝖽 <a href="https://t.me/{DS_BOT_USERNAME}?start=terms">𝖳𝖾𝗋𝗆𝗌</a> 𝖡𝖾𝖿𝗈𝗋𝖾 𝖴𝗌𝗂𝗇𝗀 𝖳𝗁𝗂𝗌 𝖡𝗈𝗍.</b>""",
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.HTML
         )
-        #await asyncio.sleep(10)
-        #await s.delete()
 
 @Client.on_message(filters.private & filters.text & ~filters.command("start"))
 async def handle_request(bot, message):
@@ -149,11 +147,13 @@ async def handle_request(bot, message):
                 ],[
                     InlineKeyboardButton("How To Open Link & Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
-                await message.reply_text(
-                    text=VERIFICATION_TEXT.format(message.from_user.mention),
-                    protect_content=True,
-                    reply_markup=InlineKeyboardMarkup(btn)
-                )
+                i = await message.reply_text(
+                        text=VERIFICATION_TEXT.format(message.from_user.mention),
+                        protect_content=True,
+                        reply_markup=InlineKeyboardMarkup(btn)
+                    )
+                await asyncio.sleep(300)
+                await i.delete()
                 return
             
         tag, channel = "videsi", DS_VIDESI_FILE_CHANNEL
