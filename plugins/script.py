@@ -1,5 +1,17 @@
 LOG_TEXT = """<b>#NewUser\n\nID - <code>{}</code>\n\nNᴀᴍᴇ - {}</b>"""
 
+ABOUT_TXT = """<b>╭────[ ᴍʏ ᴅᴇᴛᴀɪʟs ]────⍟
+├⍟ ᴍʏ ɴᴀᴍᴇ : Silent Adult Bot 🔞 
+├⍟ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/THE_DS_OFFICIAL'>ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️</a> 
+├⍟ ʟɪʙʀᴀʀʏ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢʀᴀᴍ</a>
+├⍟ ʟᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/download/releases/3.0/'>ᴘʏᴛʜᴏɴ 𝟹</a> 
+├⍟ ᴅᴀᴛᴀʙᴀꜱᴇ : <a href='https://www.mongodb.com/'>ᴍᴏɴɢᴏ ᴅʙ</a> 
+├⍟ ꜱᴛᴀᴛᴜꜱ : ᴠ0.8 [ ꜱᴛᴀʙʟᴇ ]
+|
+├⍟ <a href='https://t.me/THE_DS_OFFICIAL'>Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Aꜱᴋ Mᴇ ✓</a>
+╰───────────────⍟</b>"""
+"""
+
 SUBS_TXT = """𝖯𝗎𝗋𝖼𝗁𝖺𝗌𝖾 𝖮𝗎𝗋 𝖲𝗎𝖻𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇 𝖳𝗈 𝖡𝗈𝗈𝗌𝗍 𝖸𝗈𝗎 𝖣𝖺𝗂𝗅𝗒 𝖫𝗂𝗆𝗂𝗍𝗌.
 
 <blockquote>𝖥𝗋𝖾𝖾 𝖴𝗌𝖾𝗋 𝖡𝖾𝗇𝖾𝖿𝗂𝗍𝗌</blockquote>
