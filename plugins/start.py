@@ -128,12 +128,14 @@ async def handle_request(bot, message):
             return await message.reply("No video found.")
 
         try:
-            await bot.copy_message(
-                chat_id=message.chat.id,
-                from_chat_id=channel,
-                message_id=file['msg_id'],
-                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
-            )
+            qw = await bot.copy_message(
+                    chat_id=message.chat.id,
+                    from_chat_id=channel,
+                    message_id=file['msg_id'],
+                    caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
+                )
+            await asyncio.sleep(600)
+            await qw.delete()
         except Exception as e:
             print(f"❌ Error sending file: {e}")
             await db.delete_file(file['msg_id'])  # ← Use the function here
@@ -168,12 +170,14 @@ async def handle_request(bot, message):
             return await message.reply("No video found.")
 
         try:
-            await bot.copy_message(
-                chat_id=message.chat.id,
-                from_chat_id=channel,
-                message_id=file['msg_id'],
-                caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
-            )
+            la = await bot.copy_message(
+                    chat_id=message.chat.id,
+                    from_chat_id=channel,
+                    message_id=file['msg_id'],
+                    caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
+                )
+            await asyncio.sleep(600)
+            await la.delete()
         except Exception as e:
             print(f"❌ Error sending file: {e}")
             await db.delete_file(file['msg_id'])  # ← Use the function here
