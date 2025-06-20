@@ -98,7 +98,6 @@ async def start(client, message):
 async def handle_request(bot, message):
     user_id = message.from_user.id
     text = message.text.lower().strip()
-    me = await bot.get_me()
     
     if "videsi video" in text:
         is_joined = await checkSub(bot, message)
@@ -132,7 +131,7 @@ async def handle_request(bot, message):
                     chat_id=message.chat.id,
                     from_chat_id=channel,
                     message_id=file['msg_id'],
-                    caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
+                    caption=f"""<b>Powered By <a href='https://t.me/AdultColonyXBot'>𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦</a></b>\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"""
                 )
             await asyncio.sleep(600)
             await qw.delete()
@@ -174,8 +173,8 @@ async def handle_request(bot, message):
                     chat_id=message.chat.id,
                     from_chat_id=channel,
                     message_id=file['msg_id'],
-                    caption=f"**Powered By {me.mention}**\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"
-                )
+                    caption=f"""<b>Powered By <a href='https://t.me/AdultColonyXBot'>𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦</a></b>\n\n<blockquote>This Message Will Be Deleted In 10 Minutes Due To Copyright Issue So Save It Somewhere.</blockquote>"""
+            )
             await asyncio.sleep(600)
             await la.delete()
         except Exception as e:
