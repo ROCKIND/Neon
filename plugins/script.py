@@ -1,5 +1,17 @@
 LOG_TEXT = """<b>#NewUser\n\nID - <code>{}</code>\n\nNᴀᴍᴇ - {}</b>"""
 
+DSMYPLANTXT = """<blockquote><b>𝗬𝗼𝘂𝗿 𝗣𝗹𝗮𝗻 𝗗𝗲𝘁𝗮𝗶𝗹𝘀 ✅</b></blockquote>
+
+👤 <b>𝖴𝗌𝖾𝗋 𝖭𝖺𝗆𝖾:</b> {}
+🆔 <b>𝖴𝗌𝖾𝗋 𝖨𝖣:</b> <code>{}</code>
+💎 <b>𝖲𝗎𝖻𝗌𝖼𝗋𝗂𝗉𝗍𝗂𝗈𝗇:</b> {}
+🎯 <b>𝖣𝖺𝗂𝗅𝗒 𝖫𝗂𝗆𝗂𝗍:</b> {} 𝖣𝖾𝗌𝗂, {} 𝖵𝗂𝖽𝖾𝗌𝗂
+📥 <b>𝖥𝗂𝗅𝖾𝗌 𝖴𝗌𝖾𝖽:</b> {}/{} 𝖣𝖾𝗌𝗂, {}/{} 𝖵𝗂𝖽𝖾𝗌𝗂
+📤 <b>𝖥𝗂𝗅𝖾𝗌 𝖱𝖾𝗆𝖺𝗂𝗇𝗂𝗇𝗀:</b> {} 𝖣𝖾𝗌𝗂, {} 𝖵𝗂𝖽𝖾𝗌𝗂
+
+📅 <b>𝖣𝖺𝗍𝖾:</b> {}
+"""
+
 ABOUT_TXT = """<b>
 ‣ ᴍʏ ɴᴀᴍᴇ : <a href='https://t.me/AdultColonyXBot'>𝖠𝖽𝗎𝗅𝗍 𝖢𝗈𝗅𝗈𝗇𝗒 💦</a>
 ‣ Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/Developer_DM_Bot'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</a>
@@ -10,7 +22,7 @@ ABOUT_TXT = """<b>
 
 Iғ Yᴏᴜ Hᴀᴠᴇ Aɴʏ Qᴜᴇꜱᴛɪᴏɴꜱ Aʙᴏᴜᴛ Bᴏᴛ Tʜᴇɴ Cᴏɴᴛᴀᴄᴛ Wɪᴛʜ Dᴇᴠᴇʟᴘᴇʀ ✓</b>"""
 
-VERIFICATION_TEXT = """<b><i>👋 ʜᴇʏ {},
+VERIFICATION_TEXT = """<b><i>👋🏻 ʜᴇʏ {},
 
 📌 ʏᴏᴜ ᴀʀᴇ ɴᴏᴛ ᴠᴇʀɪꜰɪᴇᴅ ᴛᴏᴅᴀʏ, ᴘʟᴇᴀꜱᴇ ᴄʟɪᴄᴋ ᴏɴ ᴠᴇʀɪꜰʏ & ɢᴇᴛ ᴀᴄᴄᴇꜱꜱ ✓
 
@@ -19,6 +31,8 @@ VERIFICATION_TEXT = """<b><i>👋 ʜᴇʏ {},
 VERIFIED_LOG_TEXT = """ᴜꜱᴇʀ ᴠᴇʀɪꜰɪᴇᴅ ꜱᴜᴄᴄᴇꜱꜱꜰᴜʟʟʏ ✓
 
 👤 ɴᴀᴍᴇ:- {} [ <code>{}</code> ]
+
+📅 𝖣𝖺𝗍𝖾: {}
 
 #Verificaton_Completed"""
 
