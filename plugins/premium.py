@@ -1,6 +1,6 @@
 from datetime import timedelta, datetime
 import pytz, traceback, string, random 
-from config import DS_ADMINS, DS_LOG_CHANNEL
+from config import DS_ADMINS, DS_LOG_CHANNEL, DS_BOT_USERNAME
 from plugins.database import db 
 from pyrogram import Client, filters 
 from utils import get_seconds
