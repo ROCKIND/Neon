@@ -1,5 +1,6 @@
 import datetime
 import pytz, random, string  
+from pytz import timezone
 from datetime import date 
 from config import DS_API, DS_URL, FREE_LIMIT_DESI, FREE_LIMIT_VIDESI, PREMIUM_LIMIT_DESI, PREMIUM_LIMIT_VIDESI
 from shortzy import Shortzy
@@ -94,8 +95,8 @@ async def check_and_increment(user_id, tag):
     if not user:
         await db.add_user(user_id, f"User{user_id}")
         user = await db.get_user(user_id)
-
-    today = str(datetime.datetime.utcnow().date())
+        
+    today = str(datetime.datetime.now(pytz.timezone("Asia/Kolkata")).date())
     last_used_date = user.get("date")
     is_premium = await db.has_premium_access(user_id)
 
@@ -121,12 +122,16 @@ async def reset_limits():
     print("Resetting daily usage limits...")
     async for user in db.get_all_users():
         await db.set_free_used(user['id'], {"desi": 0, "videsi": 0})
-        await db.set_date(user['id'], str(datetime.datetime.utcnow().date()))
+        ist = timezone("Asia/Kolkata")
+        today = str(datetime.datetime.now(ist).date())
+        await db.set_date(user['id'], today)
     print("Limits reset.")
 
+
 async def start_scheduler():
-    scheduler = AsyncIOScheduler()
+    scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")  # Ensure IST timezone!
     scheduler.add_job(reset_limits, "cron", hour=0, minute=0)
     scheduler.start()
+    print("[Scheduler] Daily reset job scheduled at 00:00 IST.")
 
 # ======================================================================= #
