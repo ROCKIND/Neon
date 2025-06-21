@@ -1,0 +1,122 @@
+import asyncio import string import random from datetime import datetime, timedelta, time as dtime import pytz
+
+from pyrogram import Client from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton from apscheduler.schedulers.asyncio import AsyncIOScheduler
+
+Replace these with your config values
+
+AUTO_REDEEM_CODE = 3 DURATION_OF_PREMIUM = "1day" TIME_OF_POST = "11:00" POST_DELETE_TIME = 2 DS_AUTH_CHANNEL = -1001234567890  # your channel ID DS_LOG_CHANNEL = -1009876543210   # your log channel ID DS_BOT_USERNAME = "YourBotUsername" DS_API_ID = 123456 DS_API_HASH = "your_api_hash" DS_BOT_TOKEN = "your_bot_token"
+
+VALID_REDEEM_CODES = {} REDEEM_CODES_TRACKER = {} REDEEM_MESSAGE_ID = None REDEEM_MESSAGE_DATE = None
+
+scheduler = AsyncIOScheduler()
+
+Generate redeem code
+
+def generate_code(length=8): chars = string.ascii_letters + string.digits return ''.join(random.choice(chars) for _ in range(length))
+
+Convert time string to seconds
+
+async def get_seconds(time_string): unit_multipliers = { "s": 1, "sec": 1, "secs": 1, "min": 60, "mins": 60, "hour": 3600, "hours": 3600, "day": 86400, "days": 86400, "month": 30 * 86400, "year": 365 * 86400, } for unit in unit_multipliers: if time_string.endswith(unit): value = int(time_string.replace(unit, "")) return value * unit_multipliers[unit] return 0
+
+Post daily redeem codes
+
+async def post_daily_redeem_codes(bot: Client): global REDEEM_MESSAGE_ID, REDEEM_CODES_TRACKER, REDEEM_MESSAGE_DATE codes = [] VALID_REDEEM_CODES.clear() REDEEM_CODES_TRACKER.clear()
+
+for _ in range(AUTO_REDEEM_CODE):
+    code = generate_code()
+    VALID_REDEEM_CODES[code] = DURATION_OF_PREMIUM
+    REDEEM_CODES_TRACKER[code] = {"used": False, "user_id": None}
+    codes.append(code)
+
+today_str = datetime.now(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y")
+codes_text = '\n'.join(f"\u27a4 <code>/redeem {c}</code>" for c in codes)
+
+text = f"""<b>Redeem Codes Generated For Today ({today_str})!
+
+🎟️ Total Codes: {AUTO_REDEEM_CODE} ⏳ Duration: {DURATION_OF_PREMIUM}</b>
+
+{codes_text}
+
+🔰<u>𝗥𝗲𝗱𝗲𝗲𝗺 𝗜𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻</u>🔰 <b>𝙹𝚞𝚜𝚝 𝚌𝚕𝚒𝚌𝚔 𝚝𝚑𝚎 𝚊𝚋𝚘𝚟𝚎 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚘𝚙𝚢 𝚊𝚗𝚍 𝚝𝚑𝚎𝚗 𝚜𝚎𝚗𝚍 𝚝𝚑𝚊𝚝 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚝𝚑𝚎 𝙱𝚘𝚝, 𝚝𝚑𝚊𝚝'𝚜 𝚒𝚝 🔥</b>"""
+
+keyboard = InlineKeyboardMarkup([
+    [InlineKeyboardButton("Redeem Here ✓", url=f"https://t.me/{DS_BOT_USERNAME}")],
+    [InlineKeyboardButton("Any Query ❔", url="https://t.me/Developer_DM_Bot")]
+])
+
+msg = await bot.send_message(DS_AUTH_CHANNEL, text, reply_markup=keyboard)
+REDEEM_MESSAGE_ID = msg.message_id
+REDEEM_MESSAGE_DATE = datetime.utcnow()
+
+delete_time = REDEEM_MESSAGE_DATE + timedelta(days=POST_DELETE_TIME)
+scheduler.add_job(delete_redeem_post, 'date', run_date=delete_time, args=[bot])
+
+Update redeem message after redemption
+
+async def update_redeem_post(bot: Client): if REDEEM_MESSAGE_ID: today_str = datetime.now(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y") lines = [] for code, data in REDEEM_CODES_TRACKER.items(): if data["used"]: lines.append(f"➤ <s><code>/redeem {code}</code></s>") else: lines.append(f"➤ <code>/redeem {code}</code>")
+
+codes_text = "\n".join(lines)
+    text = f"""<b>Redeem Codes Generated For Today ({today_str})!
+
+🎟️ Total Codes: {AUTO_REDEEM_CODE} ⏳ Duration: {DURATION_OF_PREMIUM}</b>
+
+{codes_text}
+
+🔰<u>𝗥𝗲𝗱𝗲𝗲𝗺 𝗜𝗻𝘀𝘁𝗿𝘂𝗰𝘁𝗶𝗼𝗻</u>🔰 <b>𝙹𝚞𝚜𝚝 𝚌𝚕𝚒𝚌𝚔 𝚝𝚑𝚎 𝚊𝚋𝚘𝚟𝚎 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚌𝚘𝚙𝚢 𝚊𝚗𝚍 𝚝𝚑𝚎𝚗 𝚜𝚎𝚗𝚍 𝚝𝚑𝚊𝚝 𝚌𝚘𝚍𝚎 𝚝𝚘 𝚝𝚑𝚎 𝙱𝚘𝚝, 𝚝𝚑𝚊𝚝'𝚜 𝚒𝚝 🔥</b>"""
+
+keyboard = InlineKeyboardMarkup([
+        [InlineKeyboardButton("Redeem Here ✓", url=f"https://t.me/{DS_BOT_USERNAME}")],
+        [InlineKeyboardButton("Any Query ❔", url="https://t.me/Developer_DM_Bot")]
+    ])
+
+    await bot.edit_message_text(
+        chat_id=DS_AUTH_CHANNEL,
+        message_id=REDEEM_MESSAGE_ID,
+        text=text,
+        reply_markup=keyboard
+    )
+
+Delete redeem post
+
+async def delete_redeem_post(bot: Client): global REDEEM_MESSAGE_ID if REDEEM_MESSAGE_ID: try: await bot.delete_messages(chat_id=DS_AUTH_CHANNEL, message_ids=[REDEEM_MESSAGE_ID]) REDEEM_MESSAGE_ID = None except Exception as e: print(f"[ERROR] Failed to delete redeem message: {e}")
+
+Scheduler starter
+
+async def start_scheduler(bot: Client): hour, minute = map(int, TIME_OF_POST.split(":")) ist = pytz.timezone("Asia/Kolkata") target_time = dtime(hour, minute, tzinfo=ist) utc_time = target_time.astimezone(pytz.utc)
+
+scheduler.add_job(
+    post_daily_redeem_codes,
+    trigger='cron',
+    hour=utc_time.hour,
+    minute=utc_time.minute,
+    args=[bot]
+)
+scheduler.start()
+
+Pyrogram Bot class
+
+class Bot(Client):
+
+def __init__(self):
+    super().__init__(
+        "pom bot",
+        api_id=DS_API_ID,
+        api_hash=DS_API_HASH,
+        bot_token=DS_BOT_TOKEN,
+        workers=150,
+        sleep_threshold=5
+    )
+
+async def start(self):
+    await super().start()
+    await start_scheduler(self)
+    me = await self.get_me()
+    self.username = '@' + me.username
+    print(f'{self.username} Bot Started.')
+
+async def stop(self, *args):
+    await super().stop()
+    print('Bot Stopped Bye')
+
+Bot().run()
+
