@@ -2,7 +2,7 @@ import asyncio
 from config import *
 from .database import db
 from .fsub import checkSub
-from .script import DS_TEXT, DST_TEXT, LOG_TEXT, SUBS_TXT, VERIFIED_LOG_TEXT, VERIFICATION_TEXT, ABOUT_TXT
+from .script import DS_TEXT, DST_TEXT, LOG_TEXT, SUBS_TXT, VERIFIED_LOG_TEXT, VERIFICATION_TEXT, ABOUT_TXT, DSMYPLANTXT
 from utils import verify_user, check_token, check_verification, get_token, check_and_increment
 from pyrogram.errors import *
 from pyrogram import Client, filters, enums
@@ -76,7 +76,7 @@ async def start(client, message):
                         f"<b>✅ Hey {message.from_user.mention}, you are successfully verified! \n\nYou now have access until midnight today ✓</b>",
                         protect_content=True
                     )
-                await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id))
+                await client.send_message(DS_LOG_CHANNEL, VERIFIED_LOG_TEXT.format(message.from_user.mention, message.chat.id, str(datetime.datetime.now(pytz.timezone("Asia/Kolkata")).date())))
                 await verify_user(client, userid, token) 
                 await asyncio.sleep(70)
                 await t.delete()
@@ -91,8 +91,10 @@ async def start(client, message):
             photo=DS_PIC,
             caption=f"""<b><blockquote>𝖳𝗁𝗂𝗌 𝖡𝗈𝗍 𝖢𝗈𝗇𝗍𝖺𝗂𝗇𝗌 18+ 𝖢𝗈𝗇𝗍𝖾𝗇𝗍 𝖲𝗈 𝖪𝗂𝗇𝖽𝗅𝗒 𝖠𝖼𝖼𝖾𝗌𝗌 𝖨𝗍 𝖶𝗂𝗍𝗁 𝖸𝗈𝗎𝗋 𝖮𝗐𝗇 𝖱𝗂𝗌𝗄. 𝖳𝗁𝖾 𝖬𝖺𝗍𝖾𝗋𝗂𝖺𝗅 𝖬𝖺𝗒 𝖨𝗇𝖼𝗅𝗎𝖽𝖾 𝖤𝗑𝗉𝗅𝗂𝖼𝗂𝗍 𝖮𝗋 𝖦𝗋𝖺𝗉𝗁𝗂𝖼 𝖢𝗈𝗇𝗍𝖺𝖼𝗍 𝖳𝗁𝖺𝗍 𝖨𝗌 𝖴𝗇𝗌𝗎𝗂𝗍𝖺𝖻𝗅𝖾 𝖥𝗈𝗋 𝖬𝗂𝗇𝗈𝗋𝗌. 𝖲𝗈 𝖢𝗁𝗂𝗅𝖽𝗋𝖾𝗇𝗌 𝖯𝗅𝖾𝖺𝗌𝖾 𝖲𝗍𝖺𝗒 𝖠𝗐𝖺𝗒.</blockquote>\n\n𝖯𝗅𝖾𝖺𝗌𝖾 𝖢𝗁𝖾𝖼𝗄 𝖮𝗎𝗋 <a href="https://t.me/{DS_BOT_USERNAME}?start=disclaimer">𝖣𝗂𝗌𝖼𝗅𝖺𝗂𝗆𝖾𝗋</a> 𝖠𝗇𝖽 <a href="https://t.me/{DS_BOT_USERNAME}?start=terms">𝖳𝖾𝗋𝗆𝗌</a> 𝖡𝖾𝖿𝗈𝗋𝖾 𝖴𝗌𝗂𝗇𝗀 𝖳𝗁𝗂𝗌 𝖡𝗈𝗍.</b>""",
             reply_markup=keyboard,
+            is_spoiler=True,
             parse_mode=enums.ParseMode.HTML
         )
+        await message.reply_text("𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖯𝗋𝖾𝖿𝖾𝗋𝗋𝖾𝖽 𝖥𝗂𝗅𝖾 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒 👇🏻")
 
 @Client.on_message(filters.private & filters.text & ~filters.command("start"))
 async def handle_request(bot, message):
@@ -146,7 +148,7 @@ async def handle_request(bot, message):
         if not await db.has_premium_access(user_id):
             if not await check_verification(bot, user_id) and DS_VERIFICATION == True:
                 btn = [[
-                    InlineKeyboardButton("Verify", url=await get_token(bot, user_id, f"https://telegram.me/{DS_BOT_USERNAME}?start="))
+                    InlineKeyboardButton("Verify ✓", url=await get_token(bot, user_id, f"https://telegram.me/{DS_BOT_USERNAME}?start="))
                 ],[
                     InlineKeyboardButton("How To Open Link & Verify", url=DS_VERIFY_TUTORIAL)
                 ]]
@@ -206,18 +208,12 @@ async def handle_request(bot, message):
 
         desi_remain = desi_limit - desi_used
         videsi_remain = videsi_limit - videsi_used
-
-        text = (
-            f"<blockquote><b>𝗣𝗹𝗮𝗻 𝗗𝗲𝘁𝗮𝗶𝗹𝘀</b></blockquote>\n\n"
-            f"<b>𝗨𝘀𝗲𝗿 𝗡𝗮𝗺𝗲</b> - {name}\n"
-            f"<b>𝗨𝘀𝗲𝗿 𝗜𝗗</b> - {user_id}\n"
-            f"<b>𝗦𝘂𝗯𝘀𝗰𝗿𝗶𝗽𝘁𝗶𝗼𝗻</b> - {plan}\n"
-            f"<b>𝗗𝗮𝗶𝗹𝘆 𝗙𝗶𝗹𝗲𝘀 𝗟𝗶𝗺𝗶𝘁𝘀</b> - {desi_limit} Desi, {videsi_limit} Videsi\n"
-            f"<b>𝗙𝗶𝗹𝗲𝘀 𝗨𝘀𝗲𝗱</b> - {desi_used}/{desi_limit} Desi, {videsi_used}/{videsi_limit} Videsi\n"
-            f"<b>𝗙𝗶𝗹𝗲𝘀 𝗥𝗲𝗺𝗮𝗶𝗻𝗶𝗻𝗴</b> - {desi_remain} Desi, {videsi_remain} Videsi"
+        today = str(datetime.datetime.now(pytz.timezone("Asia/Kolkata")).date())
+    
+        await message.reply(
+            DSMYPLANTXT.format(name, user_id, plan, desi_limit, videsi_limit, desi_used, desi_limit, videsi_used, videsi_limit, desi_remain, videsi_remain, today),
+            parse_mode=enums.ParseMode.HTML
         )
-
-        await message.reply(text, parse_mode=enums.ParseMode.HTML)
     
     elif "get premium" in text: 
         buttons = [[
