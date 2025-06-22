@@ -1,3 +1,5 @@
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 from pyrogram import Client, filters
 from config import DS_DESI_FILE_CHANNEL, DS_VIDESI_FILE_CHANNEL
 from plugins.database import db
@@ -23,3 +25,5 @@ async def save_videsi(_, message):
             file_size=message.video.file_size,
             tag="videsi"
         )
+
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
