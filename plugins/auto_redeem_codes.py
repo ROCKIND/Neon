@@ -1,49 +1,17 @@
-# config.py
-AUTO_REDEEM_CODE = 3
-DURATION_OF_PREMIUM = "1day"
-TIME_OF_POST = "11:00"
-POST_DELETE_TIME = 2
-DS_AUTH_CHANNEL = -1001234567890
-DS_LOG_CHANNEL = -1009876543210
-DS_BOT_USERNAME = "YourBotUsername"
-DS_API_ID = 123456
-DS_API_HASH = "your_api_hash"
-DS_BOT_TOKEN = "your_bot_token"
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
-# scheduler.py
-import pytz
-from datetime import datetime, time as dtime
-from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from .tasks import post_daily_redeem_codes
-
-scheduler = AsyncIOScheduler()
-
-
-def start_auto_redeem_scheduler(bot, time_of_post):
-    hour, minute = map(int, time_of_post.split(":"))
-    ist = pytz.timezone("Asia/Kolkata")
-    now = datetime.now(ist)
-    target_time = datetime.combine(now.date(), dtime(hour, minute))
-    utc_time = ist.localize(target_time).astimezone(pytz.utc)
-
-    scheduler.add_job(post_daily_redeem_codes, trigger='cron', hour=utc_time.hour, minute=utc_time.minute, args=[bot])
-    scheduler.start()
-
-
-# tasks.py
 import random
 import string
 from datetime import datetime, timedelta
 import pytz
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from .config import AUTO_REDEEM_CODE, DURATION_OF_PREMIUM, POST_DELETE_TIME, DS_AUTH_CHANNEL, DS_BOT_USERNAME, DS_LOG_CHANNEL
-from .utils import generate_code
+from config import AUTO_REDEEM_CODE, DURATION_OF_PREMIUM, POST_DELETE_TIME, DS_AUTH_CHANNEL, DS_BOT_USERNAME, DS_LOG_CHANNEL, VALID_REDEEM_CODES, REDEEM_CODES_TRACKER
+from .scheduler import scheduler
+from utils import generate_code
 
-VALID_REDEEM_CODES = {}
-REDEEM_CODES_TRACKER = {}
 REDEEM_MESSAGE_ID = None
 REDEEM_MESSAGE_DATE = None
-
+REDEEM_CODES_TRACKER = {}
 
 async def post_daily_redeem_codes(bot):
     global REDEEM_MESSAGE_ID, REDEEM_CODES_TRACKER, REDEEM_MESSAGE_DATE
@@ -79,7 +47,6 @@ async def post_daily_redeem_codes(bot):
     REDEEM_MESSAGE_ID = msg.message_id
     REDEEM_MESSAGE_DATE = datetime.utcnow()
 
-    from .scheduler import scheduler
     delete_time = datetime.now() + timedelta(days=POST_DELETE_TIME)
     scheduler.add_job(delete_redeem_post, 'date', run_date=delete_time, args=[bot])
 
@@ -127,64 +94,3 @@ async def delete_redeem_post(bot):
             REDEEM_MESSAGE_ID = None
         except Exception:
             pass
-
-
-# utils.py
-import random
-import string
-
-
-def generate_code(length=8):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
-
-
-async def get_seconds(time_string):
-    units = {
-        "s": 1, "sec": 1, "secs": 1,
-        "min": 60, "mins": 60,
-        "hour": 3600, "hours": 3600,
-        "day": 86400, "days": 86400,
-        "month": 30 * 86400,
-        "year": 365 * 86400,
-    }
-    for unit in units:
-        if time_string.endswith(unit):
-            try:
-                val = int(time_string.replace(unit, ""))
-                return val * units[unit]
-            except:
-                return 0
-    return 0
-
-
-# bot.py
-from pyrogram import Client
-from config import DS_API_ID, DS_API_HASH, DS_BOT_TOKEN, TIME_OF_POST
-from scheduler import start_auto_redeem_scheduler
-from plugins.daily_reset import start_scheduler as start_daily_reset_scheduler
-
-
-class Bot(Client):
-    def __init__(self):
-        super().__init__(
-            "AutoRedeemBot",
-            api_id=DS_API_ID,
-            api_hash=DS_API_HASH,
-            bot_token=DS_BOT_TOKEN,
-            plugins=dict(root="plugins")
-        )
-
-    async def start(self):
-        await super().start()
-        start_daily_reset_scheduler(self)
-        start_auto_redeem_scheduler(self, TIME_OF_POST)
-        me = await self.get_me()
-        self.username = '@' + me.username
-        print(f"{self.username} Bot Started.")
-
-    async def stop(self, *args):
-        await super().stop()
-        print("Bot Stopped. Bye!")
-
-
-Bot().run()
