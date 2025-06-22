@@ -1,3 +1,5 @@
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 from datetime import timedelta, datetime
 import pytz, traceback, string, random 
 from config import DS_ADMINS, DS_LOG_CHANNEL, DS_BOT_USERNAME
@@ -50,6 +52,8 @@ Aᴍᴏᴜɴᴛ:</b> {num_codes}
         await message.reply_text(response_text, reply_markup=keyboard)
     else:
         await message.reply_text("<b>♻ Usage:\n\n➩ <code>/add_redeem 1min 1</code>,\n➩ <code>/add_redeem 1hour 10</code>,\n➩ <code>/add_redeem 1day 5</code></b>")
+
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 @Client.on_message(filters.command("redeem"))
 async def redeem_code(client, message):
@@ -110,6 +114,8 @@ async def redeem_code(client, message):
     else:
         await message.reply_text("Usage: /redeem <code>")
 
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 @Client.on_message(filters.command("premium") & filters.user(DS_ADMINS))
 async def add_premium(client, message):
     try:
@@ -138,6 +144,7 @@ async def add_premium(client, message):
         traceback.print_exc()
         await message.reply_text(f"error - {e}")
 
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 @Client.on_message(filters.command("remove_premium") & filters.user(DS_ADMINS))
 async def remove_premium(client, message):
@@ -156,4 +163,4 @@ async def remove_premium(client, message):
     else:
         await message.reply_text("Usage: <code>/remove_premium user_id</code>")
 
-    
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
