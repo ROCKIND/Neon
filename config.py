@@ -16,6 +16,8 @@ DS_PIC = environ.get('DS_PIC', 'https://envs.sh/k-.jpg/HGBOTZ.jpg')
 # Database Channel For Text Or Caption Store 
 DS_DESI_FILE_CHANNEL = int(environ.get("DS_DESI_FILE_CHANNEL", "-1002699042028"))
 DS_VIDESI_FILE_CHANNEL = int(environ.get("DS_VIDESI_FILE_CHANNEL", "-1002875327582"))
+
+# Limits of Bot Usage
 FREE_LIMIT_DESI = 10
 FREE_LIMIT_VIDESI = 3
 PREMIUM_LIMIT_DESI = 40
@@ -28,7 +30,13 @@ try:
         DS_ADMINS.append(int(x))
 except ValueError:
       raise Exception("Your Admins list does not contain valid integers.")
-    
+
+# Redeem Code System 
+AUTO_REDEEM_CODE = 3
+DURATION_OF_PREMIUM = "1day"
+TIME_OF_POST = "02:00"
+POST_DELETE_TIME = 1
+
 # Mongodb Database 
 DS_DB_URI = environ.get("DS_DB_URI", "mongodb+srv://Botmaster:Botmaster@cluster08283746473883.mfjsvds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster08283746473883")
 DS_DB_NAME = environ.get("DS_DB_NAME", "silentghostadvanced")
