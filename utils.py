@@ -14,6 +14,28 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 TOKENS = {}
 VERIFIED = {}
 
+def generate_code(length=8):
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+
+async def get_seconds(time_string):
+    units = {
+        "s": 1, "sec": 1, "secs": 1,
+        "min": 60, "mins": 60,
+        "hour": 3600, "hours": 3600,
+        "day": 86400, "days": 86400,
+        "month": 30 * 86400,
+        "year": 365 * 86400,
+    }
+    for unit in units:
+        if time_string.endswith(unit):
+            try:
+                val = int(time_string.replace(unit, ""))
+                return val * units[unit]
+            except:
+                return 0
+    return 0
+    
+"""    
 async def get_seconds(time_string):
     def extract_value_and_unit(ts):
         value = ""
@@ -41,6 +63,7 @@ async def get_seconds(time_string):
         return value * 86400 * 365
     else:
         return 0
+        """ #Delete of bot works 
 
 # (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
