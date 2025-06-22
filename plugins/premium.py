@@ -5,14 +5,10 @@ import pytz, traceback, string, random
 from config import DS_ADMINS, DS_LOG_CHANNEL, DS_BOT_USERNAME
 from plugins.database import db 
 from pyrogram import Client, filters 
-from utils import get_seconds
+from utils import get_seconds, generate_code
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 VALID_REDEEM_CODES = {}
-
-def generate_code(length=8):
-    letters_and_digits = string.ascii_letters + string.digits
-    return ''.join(random.choice(letters_and_digits) for _ in range(length))
 
 @Client.on_message(filters.command("add_redeem") & filters.user(DS_ADMINS))
 async def add_redeem_code(client, message):
