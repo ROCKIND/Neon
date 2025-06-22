@@ -1,8 +1,9 @@
 # (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 from pyrogram import Client
-from config import DS_API_ID, DS_API_HASH, DS_BOT_TOKEN
 from utils import start_scheduler
+from config import DS_API_ID, DS_API_HASH, DS_BOT_TOKEN, TIME_OF_POST
+from .scheduler import start_auto_redeem_scheduler
 
 class Bot(Client):
 
@@ -20,7 +21,8 @@ class Bot(Client):
       
     async def start(self):  
         await super().start()
-        await start_scheduler()
+        start_scheduler()
+        start_auto_redeem_scheduler(self, TIME_OF_POST)
         me = await self.get_me()
         self.username = '@' + me.username
         print(f'{self.username} Bot Started.')
