@@ -2,13 +2,11 @@
 
 from datetime import timedelta, datetime
 import pytz, traceback, string, random 
-from config import DS_ADMINS, DS_LOG_CHANNEL, DS_BOT_USERNAME
+from config import DS_ADMINS, DS_LOG_CHANNEL, DS_BOT_USERNAME, VALID_REDEEM_CODES
 from plugins.database import db 
 from pyrogram import Client, filters 
 from utils import get_seconds, generate_code
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-
-VALID_REDEEM_CODES = {}
 
 @Client.on_message(filters.command("add_redeem") & filters.user(DS_ADMINS))
 async def add_redeem_code(client, message):
