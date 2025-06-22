@@ -1,3 +1,5 @@
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 import datetime
 import pytz, random, string  
 from pytz import timezone
@@ -39,7 +41,9 @@ async def get_seconds(time_string):
         return value * 86400 * 365
     else:
         return 0
-        
+
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 async def get_verify_shorted_link(link):
     shortzy = Shortzy(api_key=DS_API, base_site=DS_URL)
     link = await shortzy.convert(link)
@@ -89,6 +93,7 @@ async def check_verification(bot, userid):
         return False
 
 # ======================================================================= #
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 async def check_and_increment(user_id, tag):
     user = await db.get_user(user_id)
@@ -127,6 +132,7 @@ async def reset_limits():
         await db.set_date(user['id'], today)
     print("Limits reset.")
 
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 async def start_scheduler():
     scheduler = AsyncIOScheduler(timezone="Asia/Kolkata")  # Ensure IST timezone!
@@ -134,4 +140,4 @@ async def start_scheduler():
     scheduler.start()
     print("[Scheduler] Daily reset job scheduled at 00:00 IST.")
 
-# ======================================================================= #
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
