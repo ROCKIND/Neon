@@ -1,3 +1,5 @@
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 import asyncio, datetime, pytz
 from config import *
 from .database import db
@@ -38,7 +40,9 @@ async def sts(client, message):
         text=f"**Total Users in DB:** `{total_users}`",
         quote=True
     )
-    
+
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 @Client.on_message(filters.command("start") & filters.private & filters.incoming)
 async def start(client, message):
     if message.chat.type == enums.ChatType.PRIVATE:
@@ -95,6 +99,8 @@ async def start(client, message):
             parse_mode=enums.ParseMode.HTML
         )
         await message.reply_text("𝖲𝖾𝗅𝖾𝖼𝗍 𝖸𝗈𝗎𝗋 𝖯𝗋𝖾𝖿𝖾𝗋𝗋𝖾𝖽 𝖥𝗂𝗅𝖾 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒 👇🏻")
+
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 @Client.on_message(filters.private & filters.text & ~filters.command("start"))
 async def handle_request(bot, message):
@@ -235,3 +241,5 @@ async def handle_request(bot, message):
                 parse_mode=enums.ParseMode.HTML)
         await asyncio.sleep(300)
         await c.delete()
+
+# (C) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
