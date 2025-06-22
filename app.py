@@ -1,3 +1,5 @@
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 from flask import Flask
 app = Flask(__name__)
 
