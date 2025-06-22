@@ -121,12 +121,12 @@ async def add_premium(client, message):
     try:
         _, user_id, time, *custom_message = message.text.split(" ", 3)
         custom_message = "**Tʜᴀɴᴋ ʏᴏᴜ ғᴏʀ ᴘᴜʀᴄʜᴀsɪɴɢ ᴛʜᴇ ᴘʀᴇᴍɪᴜᴍ ᴘᴀᴄᴋᴀɢᴇ. Nᴏᴡ, ʟᴇᴠᴇʀᴀɢᴇ ɪᴛs ғᴜʟʟ ᴘᴏᴛᴇɴᴛɪᴀʟ**" if not custom_message else " ".join(custom_message)
-        time_zone = datetime.datetime.now(pytz.timezone("Asia/Kolkata"))
+        time_zone = datetime.now(pytz.timezone("Asia/Kolkata"))
         current_time = time_zone.strftime("%d-%m-%Y : %I:%M:%S %p")
         user = await client.get_users(user_id)
         seconds = await get_seconds(time)
         if seconds > 0:
-            expiry_time = datetime.datetime.now() + timedelta(seconds=seconds)
+            expiry_time = datetime.now() + timedelta(seconds=seconds)
             user_data = {"id": user.id, "expiry_time": expiry_time}
             await db.update_user(user_data)
             await db.set_plan(user.id, plan=True)
