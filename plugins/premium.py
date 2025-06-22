@@ -64,7 +64,7 @@ async def redeem_code(client, message):
         if redeem_code in VALID_REDEEM_CODES:
             try:
                 time = VALID_REDEEM_CODES.pop(redeem_code)
-                user = await client.get_users(user_id)
+                user = message.from_user.mention
 
                 try:
                     seconds = await get_seconds(time)
@@ -96,13 +96,13 @@ async def redeem_code(client, message):
                     expiry_str_in_ist = expiry_time.astimezone(pytz.timezone("Asia/Kolkata")).strftime("%d-%m-%Y\n⏱️ Expiry Time: %I:%M:%S %p")
 
                     await message.reply_text(
-                        f"Premium activated successfully!\n\nUser: {user.mention}\nUser ID: {user_id}\nPremium Access: <code>{time}</code>\n\nExpiry Date: {expiry_str_in_ist}",
+                        f"Premium activated successfully!\n\nUser: {user}\nUser ID: {user_id}\nPremium Access: <code>{time}</code>\n\nExpiry Date: {expiry_str_in_ist}",
                         disable_web_page_preview=True
                     )
 
                     await client.send_message(
                         DS_LOG_CHANNEL,
-                        text=f"#Redeem_Premium\n\n👤 User: {user.mention}\n⚡ User ID: <code>{user_id}</code>\n⏰ Premium Access: <code>{time}</code>\n⌛️ Expiry Date: {expiry_str_in_ist}",
+                        text=f"#Redeem_Premium\n\n👤 User: {user}\n⚡ User ID: <code>{user_id}</code>\n⏰ Premium Access: <code>{time}</code>\n⌛️ Expiry Date: {expiry_str_in_ist}\n\n🔑 Redeem Code: <code>{redeem_code}</code>",
                         disable_web_page_preview=True
                     )
                 else:
