@@ -30,6 +30,11 @@ try:
 except ValueError:
       raise Exception("Your Admins list does not contain valid integers.")
 
+# Codes / Tokens 
+TOKENS = {}
+VERIFIED = {}
+VALID_REDEEM_CODES = {}
+
 # Redeem Code System 
 AUTO_REDEEM_CODE = 3
 DURATION_OF_PREMIUM = "1day"
