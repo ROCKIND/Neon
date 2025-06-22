@@ -1,3 +1,4 @@
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 import re
 from os import environ
@@ -40,3 +41,5 @@ DS_API = environ.get("DS_API", "f12bdd3c5c118fdc7ab6dd26bbf360968923f379") # sho
 DS_URL = environ.get("DS_URL", "tnshort.net") # shortlink domain without https://
 DS_VERIFY_TUTORIAL = environ.get("DS_VERIFY_TUTORIAL", "https://t.me/saurabh_1710/3") # how to open link 
 DS_VERIFICATION = bool(environ.get("DS_VERIFICATION", True)) # set True Or False and make sure spelling is correct and first letter capital.
+
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
