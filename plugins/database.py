@@ -1,3 +1,5 @@
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
+
 import datetime
 import motor.motor_asyncio
 from pymongo import MongoClient
@@ -8,6 +10,7 @@ mongo = motor.motor_asyncio.AsyncIOMotorClient(DS_DB_URI)
 db_async = mongo[DS_DB_NAME]
 db_sync = client[DS_DB_NAME]
 
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
 
 class Database:
 
@@ -112,3 +115,4 @@ class Database:
     
 db = Database()
 
+# (c) ՏIᒪᗴᑎT ᘜᕼOՏT ⚡️ # Dont Remove Credit
