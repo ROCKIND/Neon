@@ -32,9 +32,6 @@ except ValueError:
 DS_DB_URI = environ.get("DS_DB_URI", "mongodb+srv://Botmaster:Botmaster@cluster08283746473883.mfjsvds.mongodb.net/?retryWrites=true&w=majority&appName=Cluster08283746473883")
 DS_DB_NAME = environ.get("DS_DB_NAME", "silentghostadvanced")
 
-# True Or False
-DS_FORWARD = bool(environ.get("DS_FORWARD", False))
-
 # Force subscribe channel 
 DS_AUTH_CHANNEL = int(environ.get('DS_AUTH_CHANNEL', '-1002371763393')) # give your force subscribe channel id here else leave it blank
 
