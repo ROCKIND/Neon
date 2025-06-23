@@ -38,7 +38,7 @@ VALID_REDEEM_CODES = {}
 # Redeem Code System 
 AUTO_REDEEM_CODE = 3
 DURATION_OF_PREMIUM = "1day"
-TIME_OF_POST = "02:00"
+TIME_OF_POST = "05:00"
 POST_DELETE_TIME = 1
 
 # Mongodb Database 
