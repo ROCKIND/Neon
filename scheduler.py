@@ -1,7 +1,7 @@
 import pytz
 from datetime import datetime, time as dtime
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
-from .auto_redeem_codes import post_daily_redeem_codes
+from plugins.auto_redeem_codes import post_daily_redeem_codes
 
 scheduler = AsyncIOScheduler()
 
