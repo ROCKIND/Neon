@@ -3,7 +3,7 @@
 from pyrogram import Client
 from utils import start_scheduler
 from config import DS_API_ID, DS_API_HASH, DS_BOT_TOKEN, TIME_OF_POST
-from plugins.scheduler import start_auto_redeem_scheduler
+from scheduler import start_auto_redeem_scheduler
 
 class Bot(Client):
 
