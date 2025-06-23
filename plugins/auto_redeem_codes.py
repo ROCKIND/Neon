@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 import pytz
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from config import AUTO_REDEEM_CODE, DURATION_OF_PREMIUM, POST_DELETE_TIME, DS_AUTH_CHANNEL, DS_BOT_USERNAME, DS_LOG_CHANNEL, VALID_REDEEM_CODES
-from .scheduler import scheduler
+from scheduler import scheduler
 from utils import generate_code
 
 REDEEM_MESSAGE_ID = None
