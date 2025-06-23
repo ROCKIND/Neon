@@ -21,8 +21,8 @@ class Bot(Client):
       
     async def start(self):  
         await super().start()
-        start_scheduler()
-        start_auto_redeem_scheduler(self, TIME_OF_POST)
+        await start_scheduler()
+        await start_auto_redeem_scheduler(self, TIME_OF_POST)
         me = await self.get_me()
         self.username = '@' + me.username
         print(f'{self.username} Bot Started.')
