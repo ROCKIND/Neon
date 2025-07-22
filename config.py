@@ -7,7 +7,7 @@ id_pattern = re.compile(r'^.\d+$')
 
 DS_API_ID = int(environ.get("DS_API_ID", "16536417"))
 DS_API_HASH = environ.get("DS_API_HASH", "f6e58a549da642d7b765744a2f82c6d9")
-DS_BOT_TOKEN = environ.get("DS_BOT_TOKEN", "8087887978:AAGfM7Pvmc4rm4alrdDRqz6mR78j4RuOUms")
+DS_BOT_TOKEN = environ.get("DS_BOT_TOKEN", "8087887978:AAFCSm09Mxcz-nCWktbmNr4CZi_BeoItGME")
 DS_BOT_USERNAME = environ.get("DS_BOT_USERNAME", "AdultColonyXBot") # bot username without @
 DS_LOG_CHANNEL = int(environ.get("DS_LOG_CHANNEL", "-1002658914842"))
 DS_STICKER = environ.get("DS_STICKER", "CAACAgUAAxkBAAKxo2hUEwRWmorYt9DEk78YDyy7cGmRAAIjDgAClfCJVcoHZyUjA-gZNgQ")
